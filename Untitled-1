@@ -1,0 +1,28 @@
+N->L->R
+L->N->R
+4 2 1 3 6 5
+1 2 3 4 5 6
+struct node {
+    int data;
+    node* left;
+    node* right;
+}
+int pre[maxn],in[maxn],post[maxn];
+node* create (int preL, int preR, int inL, int inR){
+    if (preL > preR){
+        return NULL;
+    }
+    node* root = new node;
+    root->data = pre[preL];
+    int k;
+    for(k=intL; k<=intR; k++){
+        if(int[k] == pre[preL]){
+            break;
+        }
+    }
+    int numLeft = k -intL;
+    root->lchild = create(preL+1, preL+numLeft, inL, k-1);
+    root->rchild = create(preL+numLeft+1, preR, k+1, inR);
+
+    return root;
+}
